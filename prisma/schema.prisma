@@ -1,0 +1,147 @@
+// prisma/schema.prisma
+
+// =======================================
+// 24hKids Platform - schema.prisma FINAL
+// =======================================
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Roles
+enum Role {
+  PARENT
+}
+
+// =====================
+// Modèle Admin
+// =====================
+model Admin {
+  id          Int      @id @default(autoincrement())
+  firstName   String
+  lastName    String
+  email       String   @unique
+  password    String
+  phone       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// =====================
+// Modèle Parent
+// =====================
+model Parent {
+  id          Int      @id @default(autoincrement())
+  firstName   String
+  lastName    String
+  email       String   @unique
+  password    String?
+  phone       String?
+  children    Child[]
+  notifyEmail Boolean  @default(true)
+  notifySMS   Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// =====================
+// Modèle Child (Enfant)
+// =====================
+model Child {
+  id          Int       @id @default(autoincrement())
+  firstName   String
+  lastName    String
+  birthDate   DateTime
+  parent      Parent    @relation(fields: [parentId], references: [id])
+  parentId    Int
+  bookings    Booking[]
+  allergies   String?
+  medicalNote String?
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([parentId])
+}
+
+// =====================
+// Modèle Workshop (Atelier)
+// =====================
+model Workshop {
+  id          Int       @id @default(autoincrement())
+  name        String
+  description String?
+  startTime   DateTime
+  endTime     DateTime
+  minAge      Int
+  maxAge      Int
+  capacity    Int
+  location    String?
+  status      WorkshopStatus @default(ACTIVE)
+  bookings    Booking[]
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  @@index([startTime, endTime])
+}
+
+// Statuts des ateliers
+enum WorkshopStatus {
+  ACTIVE
+  CANCELLED
+  FULL
+  DISABLED
+}
+
+// =====================
+// Modèle Booking (Réservation)
+// =====================
+model Booking {
+  id          Int       @id @default(autoincrement())
+  child       Child     @relation(fields: [childId], references: [id])
+  childId     Int
+  workshop    Workshop  @relation(fields: [workshopId], references: [id])
+  workshopId  Int
+  status      BookingStatus @default(CONFIRMED)
+  createdAt   DateTime  @default(now())
+  updatedAt   DateTime  @updatedAt
+
+  // Un enfant ne peut pas réserver deux fois le même atelier
+  @@unique([childId, workshopId])
+
+  // Index utiles pour les recherches
+  @@index([childId])
+  @@index([workshopId])
+}
+
+// Statuts des réservations
+enum BookingStatus {
+  CONFIRMED
+  WAITLIST
+}
+
+// =====================
+// Modèle AuditLog
+// =====================
+model AuditLog {
+  id              Int       @id @default(autoincrement())
+  action          String
+  performedById   Int
+  performedByEmail String
+  performedByType String    // "ADMIN" ou "PARENT"
+  targetId        Int?      // ID de l'entité concernée
+  targetType      String?   // "RESERVATION", "WORKSHOP", "PARENT", "CHILD"
+  details         Json      // Données supplémentaires
+  ipAddress       String
+  userAgent       String
+  timestamp       DateTime  @default(now())
+
+  @@index([action])
+  @@index([performedByEmail])
+  @@index([targetType])
+  @@index([timestamp])
+}

@@ -1,0 +1,150 @@
+Structure du dossier
+Le numéro de série du volume est A204-FEE1
+C:\USERS\OUTMO\ONEDRIVE\BUREAU\24HKIDS_2026\V4\24HKIDS-PLATFORM\APP
+¦   favicon.ico
+¦   globals.css
+¦   layout.tsx
+¦   page.tsx
+¦   
++---admin
+¦   +---children
+¦   ¦   ¦   page.tsx
+¦   ¦   ¦   
+¦   ¦   +---create
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---[id]
+¦   ¦           page.tsx
+¦   ¦           
+¦   +---dashboard
+¦   ¦       page.tsx
+¦   ¦       
+¦   +---exports
+¦   ¦       page.tsx
+¦   ¦       
+¦   +---login
+¦   ¦       page.tsx
+¦   ¦       
+¦   +---parents
+¦   ¦   ¦   page.tsx
+¦   ¦   ¦   
+¦   ¦   +---create
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---[id]
+¦   ¦           page.tsx
+¦   ¦           
+¦   +---reservations
+¦   ¦   ¦   page.tsx
+¦   ¦   ¦   
+¦   ¦   +---create
+¦   ¦   ¦       page.tsx
+¦   ¦   ¦       
+¦   ¦   +---[id]
+¦   ¦           page.tsx
+¦   ¦           
+¦   +---workshops
+¦       ¦   page.tsx
+¦       ¦   
+¦       +---create
+¦       ¦       page.tsx
+¦       ¦       
+¦       +---id
+¦               page.tsx
+¦               
++---api
+¦   +---admin
+¦   ¦   +---children
+¦   ¦   ¦   ¦   route.ts
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---[id]
+¦   ¦   ¦           route.ts
+¦   ¦   ¦           
+¦   ¦   +---exports
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---parents
+¦   ¦   ¦   ¦   route.ts
+¦   ¦   ¦   ¦   
+¦   ¦   ¦   +---[id]
+¦   ¦   ¦           route.ts
+¦   ¦   ¦           
+¦   ¦   +---reservations
+¦   ¦   +---workshops
+¦   ¦       ¦   route.ts
+¦   ¦       ¦   
+¦   ¦       +---[id]
+¦   ¦               route.ts
+¦   ¦               
+¦   +---auth
+¦   ¦   +---login
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---logout
+¦   ¦   ¦       route.ts
+¦   ¦   ¦       
+¦   ¦   +---session
+¦   ¦           route.ts
+¦   ¦           
+¦   +---children
+¦   ¦   ¦   route.ts
+¦   ¦   ¦   
+¦   ¦   +---[id]
+¦   ¦           route.ts
+¦   ¦           
+¦   +---parents
+¦   ¦   ¦   route.ts
+¦   ¦   ¦   
+¦   ¦   +---[id]
+¦   ¦           route.ts
+¦   ¦           
+¦   +---reservations
+¦   ¦   ¦   route.ts
+¦   ¦   ¦   
+¦   ¦   +---[id]
+¦   ¦           route.ts
+¦   ¦           
+¦   +---test
+¦   ¦       route.ts
+¦   ¦       
+¦   +---workshops
+¦       ¦   route.ts
+¦       ¦   
+¦       +---dates
+¦       ¦       route.ts
+¦       ¦       
+¦       +---[id]
+¦               route.ts
+¦               
++---components
+¦       Header.tsx
+¦       LogoutButton.tsx
+¦       
++---login
+¦       page.tsx
+¦       
++---parent-dashboard
+¦   ¦   page.tsx
+¦   ¦   
+¦   +---[parentId]
+¦       ¦   page.tsx
+¦       ¦   
+¦       +---bookings
+¦       ¦       page.tsx
+¦       ¦       
+¦       +---children
+¦           ¦   page.tsx
+¦           ¦   
+¦           +---add
+¦           ¦       page.tsx
+¦           ¦       
+¦           +---[childId]
+¦               +---edit
+¦                       page.tsx
+¦                       
++---workshops
+    ¦   page.tsx
+    ¦   
+    +---[id]
+            page.tsx
+            

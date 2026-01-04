@@ -1,0 +1,11 @@
+node_modules/
+.next/
+.env
+.env.local
+.env.* 
+prisma/dev.db
+prisma/*.db
+hf-chat/
+data/
+data/o2-key.txt
+data/o2-key.txt 

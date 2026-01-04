@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Roboto+Slab:wght@300;400;500;700&display=swap');
+@import "tailwindcss";
+
+:root {
+  --bg-main: #ffffff;        /* fond blanc */
+  --bg-section: #f8f9fa;     /* gris très clair pour sections */
+  --text-main: #082c6c;      /* bleu foncé principal */
+  --text-muted: #6c757d;     /* gris pour texte secondaire */
+  --accent: #f8ba48;         /* jaune/orange pour boutons */
+  --accent-hover: #e6a839;   /* orange plus foncé au hover */
+  --border-subtle: #dee2e6;  /* bordures subtiles */
+  --focus-ring: #007bff;     /* bleu pour focus */
+  --error: #dc3545;          /* rouge pour erreurs */
+  --success: #28a745;        /* vert pour succès */
+}
+
+@theme inline {
+  --color-background: var(--bg-main);
+  --color-foreground: var(--text-main);
+  --color-muted: var(--text-muted);
+  --color-accent: var(--bg-section);
+  --color-border: var(--border-subtle);
+  --color-primary: var(--accent);
+  --color-primary-hover: var(--accent-hover);
+  --color-destructive: var(--error);
+  --color-success: var(--success);
+  --font-sans: 'Roboto', sans-serif;
+  --font-serif: 'Roboto Slab', serif;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  line-height: 1.6;
+}
+
+/* Liens */
+a {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+a:hover,
+a:focus-visible {
+  color: var(--text-main);
+  text-decoration: none;
+}
+
+/* Boutons */
+button, .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: 25px; /* coins arrondis comme sur le site */
+  border: none;
+  background-color: var(--accent);
+  color: var(--text-main);
+  font-weight: 500;
+  font-family: 'Roboto', sans-serif;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+button:hover, .button:hover {
+  background-color: var(--accent-hover);
+}
+
+button:focus-visible, .button:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 3px;
+}
+
+.button-primary {
+    background-color: var(--text-main);
+    color: var(--accent);
+}
+.button-primary:hover {
+    background-color: var(--accent-hover);
+    color: var(--text-main);
+}
+
+/* Classes utilitaires pour le contraste */
+.contrast-text {
+  color: var(--text-main);
+}
+
+.contrast-bg {
+  background-color: var(--bg-section);
+}
+
+.contrast-border {
+  border-color: var(--border-subtle);
+}
+
+
